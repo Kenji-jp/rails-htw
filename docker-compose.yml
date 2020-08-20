@@ -1,6 +1,20 @@
 version: '3.3'
 services:
-  application:
+  ## nginx
+  web:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    volumes:
+      - ./public:/usr/share/nginx/public:cached
+      - ./log/nginx:/var/log/nginx
+    ports:
+      - 80:80
+    depends_on:
+      - app
+
+  ## rails
+  app:
     build:
       context: .
       dockerfile: ./docker/rails/Dockerfile
@@ -15,13 +29,15 @@ services:
     stdin_open: true
     environment:
       RAILS_HOST: database
+
+  ## mysql
   database:
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: ｛project_name｝_development
+      MYSQL_DATABASE: htw_development
     ports:
       - "3306:3306"
     volumes:
