@@ -37,7 +37,7 @@ services:
       dockerfile: ./docker/mysql/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: htw_test
+      MYSQL_DATABASE: htw_development
     ports:
       - "3306:3306"
     volumes:

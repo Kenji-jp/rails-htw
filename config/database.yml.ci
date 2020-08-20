@@ -3,5 +3,5 @@ test:
   encoding: utf8mb4
   host: '127.0.0.1'
   pool: 5
-  username: 'root'
+  username: root
   database: htw_test
