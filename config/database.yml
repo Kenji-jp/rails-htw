@@ -15,8 +15,8 @@ default: &default
   charset: utf8mb4
   collation: utf8mb4_general_ci
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV.fetch("DB_USERNAME") %>
-  password: <%= ENV.fetch("DB_PASSWORD") %>
+  username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { 'password' }%>
   host: <%= ENV.fetch("RAILS_HOST") { 'localhost' } %>
 
 development:

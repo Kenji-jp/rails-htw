@@ -15,7 +15,7 @@ jobs:
             DB_USERNAME: 'root'
             DB_PASSWORD: ''
 
-    working_directory: ~/repo
+    working_directory: ~/htw
 
     steps:
       - checkout
