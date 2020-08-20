@@ -10,7 +10,10 @@ jobs:
       # specify the mysql version you desire here
       - image: circleci/mysql:5.7
         environment:
-            MYSQL_ROOT_PASSWORD: password
+            RAILS_ENV: test
+            DB_HOST: 127.0.0.1
+            DB_USERNAME: 'root'
+            DB_PASSWORD: 'password'
 
     working_directory: ~/repo
 
