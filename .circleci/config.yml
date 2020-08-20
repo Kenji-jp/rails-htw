@@ -6,12 +6,12 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
           - BUNDLER_VERSION: 2.0.2
-          - RAILS_ENV: 'test'
+          - RAILS_ENV: 'development'
       # specify the mysql version you desire here
       - image: circleci/mysql:5.7
         environment:
-          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-          - MYSQL_ROOT_HOST: 'root'
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: htw_development
 
     working_directory: ~/repo
 
