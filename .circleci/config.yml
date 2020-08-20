@@ -42,5 +42,5 @@ jobs:
 
       # Run test
       - run:
-        name: Run test
-        command: bundle exec rails test
+          name: Run test
+          command: bundle exec rails test
