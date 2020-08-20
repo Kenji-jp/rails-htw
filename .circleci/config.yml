@@ -6,9 +6,12 @@ jobs:
       - image: circleci/ruby:2.6.5-node-browsers
         environment:
           - BUNDLER_VERSION: 2.0.2
-
+          - RAILS_ENV: 'development'
       # specify the mysql version you desire here
       - image: circleci/mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: htw_development
 
     working_directory: ~/htw
 
@@ -27,7 +30,6 @@ jobs:
           command: |
             gem install bundler -v 2.1.4
             bundle install --jobs=4 --retry=3 --path vendor/bundle
-
       - save_cache:
           paths:
             - ./vendor/bundle
@@ -36,7 +38,6 @@ jobs:
       # Database setup
       - run: bundle exec rake db:create
       - run: bundle exec rake db:migrate
-      - run: bundle exec rake db:schema:load
 
       # Run test
       - run:
